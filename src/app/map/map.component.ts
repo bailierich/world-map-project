@@ -17,7 +17,6 @@ export class MapComponent {
   onCountrySelect(countryCode: string) {
     this.countryService.getCountryInfo(countryCode).subscribe({
       next: (data: any[][]) => {
-        // Assuming the API returns data in an array and the country data is in the second element
         this.selectedCountryInfo = data[1][0];
         console.log('Country data:', this.selectedCountryInfo);
       },

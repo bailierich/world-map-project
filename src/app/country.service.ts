@@ -22,11 +22,10 @@ export class CountryService {
 
   selectCountry(countryCode: string): Observable<any> {
     return this.getCountryInfo(countryCode).pipe(
-      map((data) => data[1][0]), // Assuming the relevant data is at this index
+      map((data) => data[1][0]),
       catchError((error) => {
-        // Handle any errors
         console.error('Error processing country selection:', error);
-        return of(null); // Return an observable with a null value
+        return of(null);
       })
     );
   }
