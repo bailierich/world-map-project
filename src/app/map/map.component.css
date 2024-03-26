@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  height: 100%;
+}
+
+.map-container {
+  flex: 1;
+  padding: 10px;
+}
+
+.info-panel {
+  flex: 1;
+  padding: 10px;
+}
+
+.map-container svg path {
+  transition: fill 0.3s ease;
+  fill: #cccccc;
+}
+
+.map-container svg path:hover {
+  fill: #ff0000;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .map-container,
+  .info-container {
+    flex: none;
+    max-width: 100%;
+  }
+}

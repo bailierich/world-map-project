@@ -1,0 +1,33 @@
+import { Component } from '@angular/core';
+import { CountryService } from '../country.service';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-map',
+  templateUrl: './map.component.html',
+  styleUrls: ['./map.component.css'],
+  standalone: true,
+  imports: [CommonModule],
+})
+export class MapComponent {
+  selectedCountryInfo: any;
+
+  constructor(private countryService: CountryService) {}
+
+  onCountrySelect(countryCode: string) {
+    this.countryService.getCountryInfo(countryCode).subscribe({
+      next: (data: any[][]) => {
+        // Assuming the API returns data in an array and the country data is in the second element
+        this.selectedCountryInfo = data[1][0];
+        console.log('Country data:', this.selectedCountryInfo);
+      },
+      error: (error: any) => {
+        console.error('Error fetching country data:', error);
+      },
+    });
+  }
+
+  onCountryHover(countryCode: string) {
+    console.log('Hovered over country:', countryCode);
+  }
+}
